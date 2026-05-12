@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brick City Roleplay — Serious RP</title>
+    <meta name="description" content="Brick City Roleplay – A serious FiveM roleplay community. Join us for an immersive RP experience." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            overflow-x: hiddenline-height: 1.6;
+        }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+        ul { list-style: none; }
+
+        /* ===== CUSTOM SCROLLBAR ===== */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #8b0000; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #cc0000; }
+
+        /* ===== SELECTION ===== */
+        ::selection { background: rgba(187, 0, 0, 0.4); color: #fff; }
+
+        /* ===== VARIABLES ===== */
+        :root {
+            --red: #bb0000;
+            --red-dark: #8b0000;
+            --red-light: #e60000;
+            --red-glow: rgba(187, 0, 0, 0.3);
+            --black: #0a0a0a;
+            --black-2: #111111;
+            --black-3: #1a1a1a;
+            --gray: #2a2a2a;
+            --gray-light: #3a3a3a;
+            --text: #e0e0e0;
+            --text-muted: #999;
+            --text-dark: #666;
+            --font-heading: 'Oswald', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ===== LOGO PLACEHOLDER / REPLACEABLE ===== */
+        /* Replace the URL below with your actual logo image URL */
+        .logo-img {
+            height: 42px;
+            width: auto;
+            display: block;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 0 2rem;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: var(--transition);
+            background: transparent;
+        }
+        .navbar.scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(187, 0, 0, 0.15);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+        .nav-brand .brand-brick {
+            color: var(--red);
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        .nav-links a {
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            transition: var(--transition);
+            position: relative;
+            padding: 0.25rem 0;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--red);
+            transition: var(--transition);
+        }
+        .nav-links a:hover { color: #fff; }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-cta {
+            background: var(--red);
+            color: #fff !important;
+            padding: 0.5rem 1.5rem !important;
+            border-radius: 4px;
+            font-weight: 600 !important;
+            transition: var(--transition);
+        }
+        .nav-cta::after { display: none !important; }
+        .nav-cta:hover { background: var(--red-light) !important; transform: translateY(-1px); box-shadow: 0 4px 15px var(--red-glow); }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            padding: 4px;
+        }
+        .hamburger span {
+            width: 28px;
+            height: 2px;
+            background: #fff;
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        /* --- CHANGEABLE BACKGROUND IMAGE --- */
+        /* Replace the URL in background-image below with your own image URL */
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://cdn.discordapp.com/attachments/1503182610913034304/1503209634675298365/ChatGPT_Image_May_10_2026_09_37_34_PM.png?ex=6a028491&is=6a013311&hm=72679e23bb7977e1a67ee0b7eb538ef291d1f6c83d3f83435201edda6bcdf103&') center center / cover no-repeat;
+            filter: brightness(0.25) saturate(1.2);
+            z-index: 0;
+            transition: background-image 0.8s ease;
+        }
+        /* Brick texture overlay (CSS-generated, no image needed) */
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 40px,
+                    rgba(0,0,0,0.08) 40px,
+                    rgba(0,0,0,0.08) 42px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 80px,
+                    rgba(0,0,0,0.05) 80px,
+                    rgba(0,0,0,0.05) 82px
+                );
+            opacity: 0.4;
+        }
+        /* Vignette */
+        .hero-vignette {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.8) 100%);
+            z-index: 1;
+        }
+        /* Red ambient glow */
+        .hero-glow {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 400px;
+            background: radial-gradient(ellipse at center, rgba(187,0,0,0.15) 0%, transparent 70%);
+            z-index: 1;
+            pointer-events: none;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            padding: 2rem;
+        }
+        .hero-badge {
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            border: 1px solid rgba(187,0,0,0.4);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--red-light);
+            margin-bottom: 1.5rem;
+            background: rgba(187,0,0,0.08);
+            backdrop-filter: blur(4px);
+        }
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(3.5rem, 10vw, 7rem);
+            font-weight: 700;
+            line-height: 1;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+        .hero-title .highlight {
+            color: var(--red);
+            text-shadow: 0 0 30px rgba(187,0,0,0.3);
+        }
+        .hero-sub {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: var(--text-muted);
+            font-weight: 300;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.85rem 2rem;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+        .btn-primary {
+            background: var(--red);
+            color: #fff;
+            box-shadow: 0 4px 20px var(--red-glow);
+        }
+        .btn-primary:hover {
+            background: var(--red-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(187,0,0,0.4);
+        }
+        .btn-outline {
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .btn-outline:hover {
+            border-color: var(--red);
+            background: rgba(187,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        .hero-stats {
+            display: flex;
+            gap: 2.5rem;
+            justify-content: center;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        .hero-stat {
+            text-align: center;
+        }
+        .hero-stat-number {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 600;
+            color: #fff;
+        }
+        .hero-stat-number .plus {
+            color: var(--red);
+        }
+        .hero-stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin-top: 0.2rem;
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: float 2s ease-in-out infinite;
+        }
+        .scroll-indicator .mouse {
+            width: 24px;
+            height: 38px;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            position: relative;
+        }
+        .scroll-indicator .mouse::after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 8px;
+            background: var(--red);
+            border-radius: 2px;
+            animation: scrollWheel 1.5s ease-in-out infinite;
+        }
+        @keyframes scrollWheel { 0%,100% { transform: translateX(-50%) translateY(0); opacity: 1; } 50% { transform: translateX(-50%) translateY(10px); opacity: 0.3; } }
+        @keyframes float { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-8px); } }
+
+        /* ===== SECTION COMMON ===== */
+        section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+        .section-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--red);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+        .section-desc {
+            max-width: 600px;
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+        .section-header {
+            margin-bottom: 4rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            background: var(--black-2);
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .about-image-frame {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .about-image-frame img {
+            width: 100%;
+            border-radius: 8px;
+            display: block;
+        }
+        .about-image-frame .frame-accent {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--red);
+            border-radius: 8px;
+            z-index: -1;
+            opacity: 0.3;
+        }
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .about-feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+        .about-feature-item i {
+            color: var(--red);
+            font-size: 1rem;
+            margin-top: 3px;
+        }
+        .about-feature-item span {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== FEATURES ===== */
+        .features {
+            background: var(--black);
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+        .feature-card {
+            background: var(--black-2);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--red);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+        }
+        .feature-card:hover {
+            border-color: rgba(187,0,0,0.2);
+            transform: translateY(-4px);
+            background: var(--black-3);
+        }
+        .feature-card:hover::before { transform: scaleX(1); }
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(187,0,0,0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--red);
+            margin-bottom: 1.2rem;
+        }
+        .feature-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .feature-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* ===== TEAM ===== */
+        .team {
+            background: var(--black-2);
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        .team-card {
+            background: var(--black-3);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 8px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+        .team-card:hover {
+            border-color: rgba(187,0,0,0.2);
+            transform: translateY(-4px);
+        }
+        .team-avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: var(--gray);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--text-muted);
+            border: 2px solid rgba(187,0,0,0.2);
+            overflow: hidden;
+        }
+        .team-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .team-card h4 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .team-role {
+            font-size: 0.75rem;
+            color: var(--red);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0.3rem 0 0.8rem;
+        }
+        .team-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .team-status .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+        .team-status .dot.online { background: #22c55e; box-shadow: 0 0 6px rgba(34,197,94,0.5); }
+        .team-status .dot.away { background: #f59e0b; box-shadow: 0 0 6px rgba(245,158,11,0.5); }
+        .team-status .dot.offline { background: #6b7280; }
+
+        /* ===== DISCORD ===== */
+        .discord {
+            background: var(--black);
+        }
+        .discord-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .discord-preview {
+            background: var(--black-2);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        .discord-preview-header {
+            padding: 1rem 1.2rem;
+            background: var(--black-3);
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .discord-preview-header .dc-dots {
+            display: flex;
+            gap: 6px;
+        }
+        .discord-preview-header .dc-dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        .discord-preview-header .dc-dots span:nth-child(1) { background: #ff5f56; }
+        .discord-preview-header .dc-dots span:nth-child(2) { background: #ffbd2e; }
+        .discord-preview-header .dc-dots span:nth-child(3) { background: #27c93f; }
+        .discord-preview-header .dc-title {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .discord-messages {
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .dc-msg {
+            display: flex;
+            gap: 0.8rem;
+            align-items: flex-start;
+        }
+        .dc-msg-avatar {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            background: var(--gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #fff;
+            font-weight: 600;
+        }
+        .dc-msg-content {
+            flex: 1;
+        }
+        .dc-msg-user {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.2rem;
+        }
+        .dc-msg-user .role-badge {
+            font-size: 0.6rem;
+            background: var(--red);
+            color: #fff;
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            margin-left: 0.4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .dc-msg-text {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        .dc-msg-text .highlight {
+            color: var(--red-light);
+        }
+        .discord-cta {
+            margin-top: 2rem;
+        }
+
+        /* ===== CONNECT ===== */
+        .connect {
+            background: var(--black-2);
+            text-align: center;
+        }
+        .connect-box {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--black-3);
+            border: 1px solid rgba(187,0,0,0.15);
+            border-radius: 12px;
+            padding: 3rem 2rem;
+        }
+        .connect-ip {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            background: rgba(0,0,0,0.4);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .connect-ip code {
+            font-family: 'Inter', monospace;
+            font-size: 1rem;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+        .connect-ip .copy-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 0.3rem;
+        }
+        .connect-ip .copy-btn:hover { color: var(--red); }
+        .connect-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+        .connect-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background: rgba(255,255,255,0.03);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+        .connect-link:hover {
+            border-color: rgba(187,0,0,0.3);
+            color: #fff;
+            background: rgba(187,0,0,0.05);
+        }
+        .connect-link i { color: var(--red); }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--black);
+            padding: 4rem 2rem 2rem;
+            border-top: 1px solid rgba(255,255,255,0.03);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-brand {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.8rem;
+            letter-spacing: 1px;
+        }
+        .footer-brand span { color: var(--red); }
+        .footer-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            max-width: 300px;
+        }
+        .footer h4 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.2rem;
+        }
+        .footer ul li {
+            margin-bottom: 0.6rem;
+        }
+        .footer ul li a {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+        .footer ul li a:hover { color: var(--red); }
+        .footer-social {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+        .footer-social a {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.04);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+        .footer-social a:hover {
+            background: var(--red);
+            color: #fff;
+            border-color: var(--red);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.03);
+            font-size: 0.8rem;
+            color: var(--text-dark);
+        }
+
+        /* ===== REVEAL ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 968px) {
+            .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .discord-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .about-features { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 0 1rem; }
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                gap: 0;
+                background: rgba(10,10,10,0.98);
+                backdrop-filter: blur(20px);
+                transform: translateY(-120%);
+                transition: var(--transition);
+                border-bottom: 1px solid rgba(187,0,0,0.1);
+                padding: 0;
+            }
+            .nav-links.open { transform: translateY(0); }
+            .nav-links a {
+                padding: 1rem 2rem !important;
+                width: 100%;
+                border-bottom: 1px solid rgba(255,255,255,0.03);
+            }
+            .nav-links a::after { display: none; }
+            .hamburger { display: flex; }
+            .hero-title { font-size: clamp(2.8rem, 12vw, 4rem); }
+            .hero-stats { gap: 1.5rem; }
+            .hero-stat-number { font-size: 1.5rem; }
+            section { padding: 4rem 1rem; }
+            .features-grid { grid-template-columns: 1fr 1fr; }
+            .team-grid { grid-template-columns: 1fr 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .about-features { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .features-grid { grid-template-columns: 1fr; }
+            .team-grid { grid-template-columns: 1fr; }
+            .hero-actions { flex-direction: column; align-items: center; }
+            .connect-ip { flex-direction: column; }
+        }
+
+        /* ===== TOAST ===== */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--black-3);
+            border: 1px solid rgba(187,0,0,0.3);
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            z-index: 9999;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+            pointer-events: none;
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Trailer placeholder */
+        .trailer-placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: var(--black-3);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 0.8rem;
+            border: 1px solid rgba(255,255,255,0.04);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .trailer-placeholder i {
+            font-size: 2.5rem;
+            color: var(--red);
+        }
+        .trailer-placeholder:hover {
+            border-color: rgba(187,0,0,0.2);
+            background: rgba(187,0,0,0.03);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== TOAST ===== -->
+    <div class="toast" id="toast"></div>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+        <a href="#hero" class="nav-brand">
+            <!-- ===== LOGO: REPLACE THE src WITH YOUR LOGO IMAGE URL ===== -->
+            <img class="logo-img" src="https://placehold.co/160x42/1a1a1a/bb0000?text=BRICK+CITY&font=Oswald" alt="Brick City Roleplay" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <span style="display:none; align-items:center; gap:4px;"><span class="brand-brick">BRICK</span> CITY</span>
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="#about">About</a>
+            <a href="#features">Features</a>
+            <a href="#team">Team</a>
+            <a href="#discord">Discord</a>
+            <a href="#connect" class="nav-cta"><i class="fa-solid fa-play"></i> Connect</a>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+        <!-- ===== CHANGEABLE BACKGROUND IMAGE ===== -->
+        <div class="hero-bg" id="heroBg"></div>
+        <div class="hero-vignette"></div>
+        <div class="hero-glow"></div>
+        <div class="hero-content">
+            <div class="hero-badge">FiveM Serious RP</div>
+            <div class="hero-title">
+                BRICK <span class="highlight">CITY</span>
+            </div>
+            <div class="hero-sub">Where every brick tells a story &mdash; immersive serious roleplay</div>
+            <div class="hero-actions">
+                <a href="#connect" class="btn btn-primary"><i class="fa-solid fa-link"></i> Connect Now</a>
+                <a href="#discord" class="btn btn-outline"><i class="fa-brands fa-discord"></i> Join Discord</a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-number" data-count="142">0<span class="plus">+</span></div>
+                    <div class="hero-stat-label">Players Today</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number" data-count="7">0</div>
+                    <div class="hero-stat-label">Staff Members</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number" data-count="4.9">0</div>
+                    <div class="hero-stat-label">Server Rating</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number" data-count="47">0<span class="plus">+</span></div>
+                    <div class="hero-stat-label">Custom Scripts</div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+            <span>Scroll</span>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image-frame reveal">
+                    <!-- Replace with your trailer or server screenshot -->
+                    <div class="trailer-placeholder" onclick="alert('Trailer coming soon!');">
+                        <i class="fa-solid fa-play"></i>
+                        <span>Watch Trailer</span>
+                    </div>
+                    <div class="frame-accent"></div>
+                </div>
+                <div class="reveal">
+                    <span class="section-tag">About</span>
+                    <h2 class="section-title">Built on <span style="color:var(--red);">Community</span></h2>
+                    <p style="color:var(--text-muted); line-height:1.8; margin-bottom:1.5rem;">
+                        Brick City Roleplay is a serious roleplay community built by players, for players. 
+                        We pride ourselves on immersive storytelling, realistic economy, and a zero-tolerance 
+                        policy for failRP. Every character has a story to tell &mdash; make yours unforgettable.
+                    </p>
+                    <div class="about-features">
+                        <div class="about-feature-item"><i class="fa-solid fa-shield-check"></i><span>Whitelisted applications</span></div>
+                        <div class="about-feature-item"><i class="fa-solid fa-code"></i><span>100+ custom scripts</span></div>
+                        <div class="about-feature-item"><i class="fa-solid fa-users"></i><span>Active 24/7 staff</span></div>
+                        <div class="about-feature-item"><i class="fa-solid fa-clock"></i><span>1,000+ hours of RP</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURES ===== -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">What We Offer</span>
+                <h2 class="section-title">Server <span style="color:var(--red);">Features</span></h2>
+                <p class="section-desc">Everything you need for an immersive serious RP experience.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card reveal"><div class="feature-icon"><i class="fa-solid fa-sack-dollar"></i></div><h3>Economy</h3><p>Fully custom economy system with jobs, businesses, and player-driven markets.</p></div>
+                <div class="feature-card reveal"><div class="feature-icon"><i class="fa-solid fa-handcuffs"></i></div><h3>Police</h3><p>Structured LEO factions with SOPs, ranks, and realistic patrol operations.</p></div>
+                <div class="feature-card reveal"><div class="feature-icon"><i class="fa-solid fa-skull"></i></div><h3>Gangs</h3><p>Territory-based gang system with custom scripts for turf wars and alliances.</p></div>
+                <div class="feature-card reveal"><div class="feature-icon"><i class="fa-solid fa-scale-balanced"></i></div><h3>Justice</h3><p>Full DOJ system with court cases, lawyers, and active judges for fair RP.</p></div>
+                <div class="feature-card reveal"><div class="feature-icon"><i class="fa-solid fa-house"></i></div><h3>Housing</h3><p>Custom housing script with interiors, garages, and furnishing options.</p></div>
+                <div class="feature-card reveal"><div class="feature-icon"><i class="fa-solid fa-store"></i></div><h3>Businesses</h3><p>Player-owned businesses from restaurants to nightclubs with full management.</p></div>
+                <div class="feature-card reveal"><div class="feature-icon"><i class="fa-solid fa-mobile-screen"></i></div><h3>Phone</h3><p>In-game phone with apps, contacts, messaging, and social media mechanics.</p></div>
+                <div class="feature-card reveal"><div class="feature-icon"><i class="fa-solid fa-calendar-days"></i></div><h3>Events</h3><p>Weekly staff-run events with rewards, story arcs, and community involvement.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TEAM ===== -->
+    <section class="team" id="team">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Leadership</span>
+                <h2 class="section-title">Meet the <span style="color:var(--red);">Team</span></h2>
+                <p class="section-desc">The people who keep Brick City running around the clock.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card reveal">
+                    <div class="team-avatar"><i class="fa-solid fa-crown"></i></div>
+                    <h4>honorable</h4>
+                    <div class="team-role">Owner</div>
+                    <div class="team-status"><span class="dot online"></span> Online</div>
+                </div>
+                <div class="team-card reveal">
+                    <div class="team-avatar"><i class="fa-solid fa-user-tie"></i></div>
+                    <h4>Vex</h4>
+                    <div class="team-role">Head Admin</div>
+                    <div class="team-status"><span class="dot online"></span> Online</div>
+                </div>
+                <div class="team-card reveal">
+                    <div class="team-avatar"><i class="fa-solid fa-user-shield"></i></div>
+                    <h4>Boolet_YT</h4>
+                    <div class="team-role">Mod</div>
+                    <div class="team-status"><span class="dot away"></span> Away</div>
+                </div>
+                <div class="team-card reveal">
+                    <div class="team-avatar"><i class="fa-solid fa-code"></i></div>
+                    <h4>Torchinshii</h4>
+                    <div class="team-role">Mod</div>
+                    <div class="team-status"><span class="dot online"></span> Online</div>
+                </div>
+                <div class="team-card reveal">
+                    <div class="team-avatar"><i class="fa-solid fa-handcuffs"></i></div>
+                    <h4>𓆩༒𓆪 𝖆𝖓𝖝𝖎𝖊𝖙𝖞 𓆩༒𓆪</h4>
+                    <div class="team-role">PD Lead</div>
+                    <div class="team-status"><span class="dot offline"></span> Offline</div>
+                </div>
+                <div class="team-card reveal">
+                    <div class="team-avatar"><i class="fa-solid fa-headset"></i></div>
+                    <h4>Seethh</h4>
+                    <div class="team-role">Website Developer</div>
+                    <div class="team-status"><span class="dot online"></span> Online</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== DISCORD ===== -->
+    <section class="discord" id="discord">
+        <div class="container">
+            <div class="discord-grid">
+                <div class="reveal">
+                    <span class="section-tag">Community</span>
+                    <h2 class="section-title">Join our <span style="color:var(--red);">Discord</span></h2>
+                    <p style="color:var(--text-muted); line-height:1.8; margin-bottom:1.5rem;">
+                        Get whitelisted, stay up-to-date with server news, apply for staff, 
+                        and connect with 5,000+ members. Giveaways, events, and more.
+                    </p>
+                    <a href="https://discord.gg/brickcityrp" target="_blank" class="btn btn-primary">
+                        <i class="fa-brands fa-discord"></i> Join Discord
+                    </a>
+                </div>
+                <div class="discord-preview reveal">
+                    <div class="discord-preview-header">
+                        <div class="dc-dots"><span></span><span></span><span></span></div>
+                        <span class="dc-title"># ┃welcome</span>
+                    </div>
+                    <div class="discord-messages">
+                        <div class="dc-msg">
+                            <div class="dc-msg-avatar" style="background:#5865F2;">BC</div>
+                            <div class="dc-msg-content">
+                                <div class="dc-msg-user">BrickCityBot <span class="role-badge">Bot</span></div>
+                                <div class="dc-msg-text">Welcome to <span class="highlight">Brick City Roleplay</span>! Read the rules in <span class="highlight">#┃rules</span> and apply for whitelist.</div>
+                            </div>
+                        </div>
+                        <div class="dc-msg">
+                            <div class="dc-msg-avatar" style="background:#ed4245;">J</div>
+                            <div class="dc-msg-content">
+                                <div class="dc-msg-user">honorable <span class="role-badge" style="background:#5865F2;">Owner</span></div>
+                                <div class="dc-msg-text">Server back up after restart. New update pushed — check <span class="highlight">#┃changelog</span>!</div>
+                            </div>
+                        </div>
+                        <div class="dc-msg">
+                            <div class="dc-msg-avatar" style="background:#57f287;">M</div>
+                            <div class="dc-msg-content">
+                                <div class="dc-msg-user">Vex<span class="role-badge" style="background:#5865F2;">Staff</span></div>
+                                <div class="dc-msg-text">Event in 30 minutes! React in <span class="highlight">#┃events</span> to join.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONNECT ===== -->
+    <section class="connect" id="connect">
+        <div class="container">
+            <div class="section-header reveal" style="text-align:center; margin-bottom:2rem;">
+                <span class="section-tag">Play Now</span>
+                <h2 class="section-title">Connect to <span style="color:var(--red);">Brick City</span></h2>
+            </div>
+            <div class="connect-box reveal">
+                <i class="fa-solid fa-server" style="font-size:2.5rem; color:var(--red); margin-bottom:1rem;"></i>
+                <h3 style="font-family:var(--font-heading); font-size:1.5rem; color:#fff; text-transform:uppercase; margin-bottom:0.5rem;">Direct Connect</h3>
+                <div class="connect-ip">
+                    <i class="fa-solid fa-network-wired" style="color:var(--red);"></i>
+                    <code id="serverIp">https://cfx.re/join/98yl57y</code>
+                    <button class="copy-btn" onclick="copyIP()" title="Copy IP"><i class="fa-regular fa-copy"></i></button>
+                </div>
+                <a href="fivem://connect/brickcity.mywire.org:30120" class="btn btn-primary" style="margin-bottom:0.5rem;">
+                    <i class="fa-solid fa-play"></i> Connect via FiveM
+                </a>
+                <div class="connect-links">
+                    <a href="https://brickcityrp.tebex.io" target="_blank" class="connect-link"><i class="fa-solid fa-cart-shopping"></i> Store</a>
+                    <a href="https://discord.gg/brickcityrp" target="_blank" class="connect-link"><i class="fa-brands fa-discord"></i> Discord</a>
+                    <a href="#rules" class="connect-link"><i class="fa-solid fa-book"></i> Rules</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FO<!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-brand">BRICK <span>CITY</span></div>
+                <p class="footer-desc">
+                    Serious roleplay on FiveM. Built by players, for players. 
+                    Immersive storytelling, realistic economy, zero tolerance for failRP.
+                </p>
+                <div class="footer-social">
+                    <a href="https://discord.gg/brickcityrp" target="_blank" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+                    <a href="#" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" target="_blank" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#connect">Connect</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Whitelist Application</a></li>
+                    <li><a href="#">Server Rules</a></li>
+                    <li><a href="#">Staff Applications</a></li>
+                    <li><a href="#">Bug Reports</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="https://discord.gg/brickcityrp" target="_blank">Discord Support</a></li>
+                    <li><a href="#">Knowledge Base</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact Staff</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Brick City Roleplay. All rights reserved. Not affiliated with Rockstar Games or FiveM.
+        </div>
+    </footer>
+
+    <script>
+        // ===== NAVBAR SCROLL & HAMBURGER =====
+        const navbar = document.getElementById('navbar');
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 80) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('open');
+        });
+
+        // Close mobile menu on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // ===== SCROLL REVEAL =====
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // ===== COUNTER ANIMATION =====
+        function animateCounters() {
+            const counters = document.querySelectorAll('.hero-stat-number');
+            counters.forEach(counter => {
+                const target = parseFloat(counter.dataset.count);
+                const isDecimal = target % 1 !== 0;
+                const duration = 2000;
+                const startTime = performance.now();
+
+                function update(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    // Ease out cubic
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    const current = eased * target;
+
+                    if (isDecimal) {
+                        counter.textContent = current.toFixed(1);
+                    } else {
+                        counter.textContent = Math.floor(current);
+                    }
+
+                    // Append plus if needed
+                    if (counter.querySelector('.plus')) {
+                        // keep the plus
+                        const plusEl = counter.querySelector('.plus');
+                        // We rebuild safely
+                        const num = isDecimal ? current.toFixed(1) : Math.floor(current);
+                        counter.innerHTML = num + '<span class="plus">+</span>';
+                    }
+
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    } else {
+                        if (isDecimal) {
+                            counter.textContent = target.toFixed(1);
+                        } else {
+                            counter.textContent = target;
+                        }
+                        if (counter.querySelector('.plus')) {
+                            const num = isDecimal ? target.toFixed(1) : target;
+                            counter.innerHTML = num + '<span class="plus">+</span>';
+                        }
+                    }
+                }
+                requestAnimationFrame(update);
+            });
+        }
+
+        // Trigger counters when hero is visible
+        const heroSection = document.querySelector('.hero');
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    heroObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        heroObserver.observe(heroSection);
+
+        // ===== COPY IP =====
+        function copyIP() {
+            const ip = document.getElementById('serverIp').textContent;
+            navigator.clipboard.writeText(ip).then(() => {
+                const toast = document.getElementById('toast');
+                toast.textContent = '✓ Server IP copied to clipboard!';
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 3000);
+            }).catch(() => {
+                // Fallback
+                const textarea = document.createElement('textarea');
+                textarea.value = ip;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                const toast = document.getElementById('toast');
+                toast.textContent = '✓ Server IP copied to clipboard!';
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 3000);
+            });
+        }
+
+        // ===== SMOOTH ANCHOR SCROLL =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        console.log('%c BRICK CITY ROLEPLAY ', 'background: #bb0000; color: white; font-size: 2rem; font-weight: bold; padding: 10px 20px; border-radius: 4px; font-family: Oswald, sans-serif;');
+        console.log('%c Serious RP | FiveM | Custom Scripts ', 'color: #999; font-size: 0.9rem; font-family: Inter, sans-serif;');
+    </script>
+</body>
+</html>
