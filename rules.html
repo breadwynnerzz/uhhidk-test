@@ -1,13 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brick City RP | Rules</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Brick City RP | Documentation</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+
+:root{
+--bg:#0b0b0b;
+--panel:#111;
+--card:#161616;
+--border:#242424;
+--text:#f5f5f5;
+--muted:#9c9c9c;
+--accent:#bb0000;
+}
+
+body.light{
+--bg:#f5f5f5;
+--panel:#ffffff;
+--card:#f0f0f0;
+--border:#dddddd;
+--text:#111;
+--muted:#555;
+--accent:#bb0000;
+}
 
 *{
 margin:0;
@@ -15,163 +35,158 @@ padding:0;
 box-sizing:border-box;
 }
 
-:root{
---bg:#090909;
---bg2:#111111;
---card:#151515;
---border:#242424;
---text:#f5f5f5;
---muted:#9d9d9d;
---red:#bb0000;
-}
-
-html{
-scroll-behavior:smooth;
-}
-
 body{
 font-family:'Inter',sans-serif;
 background:var(--bg);
 color:var(--text);
 display:flex;
+transition:.2s;
 }
 
 /* SIDEBAR */
 
 .sidebar{
-width:300px;
+width:290px;
 height:100vh;
 position:fixed;
 left:0;
 top:0;
-background:#0b0b0b;
+background:var(--panel);
 border-right:1px solid var(--border);
-padding:24px;
+padding:18px;
 overflow-y:auto;
 }
 
 .logo{
-font-size:28px;
+font-size:22px;
 font-weight:800;
-margin-bottom:35px;
-}
-
-.logo span{
-color:var(--red);
-}
-
-.category{
-margin-bottom:34px;
-}
-
-.category h3{
-font-size:12px;
-letter-spacing:1px;
-color:#7a7a7a;
 margin-bottom:14px;
-text-transform:uppercase;
 }
 
-.category a{
+.logo span{color:var(--accent);}
+
+.topbar{
+display:flex;
+gap:10px;
+margin-bottom:12px;
+}
+
+button{
+cursor:pointer;
+border:none;
+padding:8px 10px;
+border-radius:8px;
+background:var(--card);
+color:var(--text);
+font-size:12px;
+}
+
+.search{
+width:100%;
+padding:10px;
+border-radius:8px;
+border:1px solid var(--border);
+background:transparent;
+color:var(--text);
+margin-bottom:18px;
+outline:none;
+}
+
+.group{
+margin-bottom:18px;
+}
+
+.group h3{
+font-size:11px;
+text-transform:uppercase;
+color:var(--muted);
+margin-bottom:8px;
+}
+
+.group a{
 display:block;
-padding:12px 14px;
-border-radius:10px;
-margin-bottom:6px;
+padding:9px 10px;
+border-radius:8px;
 text-decoration:none;
-color:#dcdcdc;
-font-size:15px;
+color:var(--text);
+font-size:13px;
+margin-bottom:4px;
 transition:.2s;
 }
 
-.category a:hover{
-background:#171717;
-color:white;
+.group a:hover,
+.group a.active{
+background:var(--card);
 }
 
 /* MAIN */
 
 .main{
-margin-left:300px;
-width:calc(100% - 300px);
-padding:60px 70px;
-}
-
-.hero{
-margin-bottom:60px;
+margin-left:290px;
+width:calc(100% - 290px);
+padding:60px 80px;
 }
 
 .hero h1{
-font-size:58px;
+font-size:48px;
 font-weight:800;
-margin-bottom:15px;
+margin-bottom:10px;
 }
 
 .hero p{
-max-width:850px;
-line-height:1.8;
 color:var(--muted);
-font-size:16px;
+max-width:900px;
+line-height:1.7;
 }
 
 .section{
-margin-bottom:70px;
-}
-
-.section h2{
-font-size:42px;
-font-weight:800;
-margin-bottom:25px;
-}
-
-.rule{
-background:var(--card);
-border:1px solid var(--border);
-padding:26px;
-border-radius:18px;
-margin-bottom:22px;
-}
-
-.rule h3{
-font-size:24px;
-margin-bottom:12px;
-}
-
-.rule p{
-line-height:1.9;
-color:#d3d3d3;
-font-size:15px;
-}
-
-.punishment{
-margin-top:18px;
-padding:14px 18px;
-background:rgba(187,0,0,0.08);
-border-left:3px solid var(--red);
-border-radius:10px;
-font-size:14px;
-}
-
-@media(max-width:1000px){
-
-.sidebar{
-display:none;
-}
-
-.main{
-margin-left:0;
-width:100%;
-padding:40px 24px;
-}
-
-.hero h1{
-font-size:42px;
+margin-top:70px;
 }
 
 .section h2{
 font-size:34px;
+margin-bottom:18px;
 }
 
+.card{
+background:var(--card);
+border:1px solid var(--border);
+padding:20px;
+border-radius:14px;
+margin-bottom:16px;
 }
+
+.card h3{
+font-size:20px;
+margin-bottom:8px;
+}
+
+.card p{
+color:var(--muted);
+line-height:1.8;
+font-size:14px;
+}
+
+.badge{
+margin-top:10px;
+display:inline-block;
+padding:6px 10px;
+border-radius:8px;
+background:rgba(187,0,0,0.1);
+border:1px solid rgba(187,0,0,0.3);
+font-size:12px;
+}
+
+/* MOBILE */
+
+@media(max-width:1000px){
+.sidebar{display:none;}
+.main{margin-left:0;width:100%;padding:30px;}
+.hero h1{font-size:32px;}
+}
+
+/* smooth */
+html{scroll-behavior:smooth;}
 
 </style>
 </head>
@@ -180,48 +195,41 @@ font-size:34px;
 
 <div class="sidebar">
 
-<div class="logo">
-Brick <span>City</span> RP
+<div class="logo">Brick <span>City</span> Docs</div>
+
+<div class="topbar">
+<button onclick="toggleTheme()">Theme</button>
 </div>
 
-<div class="category">
+<input class="search" placeholder="Search rules..." />
+
+<div class="group">
 <h3>Getting Started</h3>
-
-<a href="#general">📘 General Rules</a>
-<a href="#reports">🚩 Reporting Requirements</a>
-<a href="#tebex">💰 Tebex Item Loss</a>
+<a href="#general">General Rules</a>
+<a href="#newlife">New Life Rule</a>
+<a href="#metagaming">Metagaming</a>
+<a href="#failrp">FailRP</a>
 </div>
 
-<div class="category">
-<h3>City Guidelines</h3>
-
-<a href="#roleplay">📜 Roleplay Rules</a>
-<a href="#greenzone">🟢 Green Zone Conduct</a>
-<a href="#interaction">⌛ Interaction Guidelines</a>
-<a href="#criminal">🕵 Criminal Rules</a>
+<div class="group">
+<h3>Gameplay</h3>
+<a href="#fearrp">FearRP</a>
+<a href="#combat">Combat Rules</a>
+<a href="#criminal">Criminal RP</a>
+<a href="#greenzone">Green Zones</a>
 </div>
 
-<div class="category">
-<h3>Government</h3>
-
-<a href="#ems">🚑 EMS Rules</a>
-<a href="#pd">👮 PD Rules</a>
-<a href="#weazel">📰 Weazel News</a>
+<div class="group">
+<h3>Legal Systems</h3>
+<a href="#pd">Police Department</a>
+<a href="#ems">EMS</a>
+<a href="#weazel">Weazel News</a>
 </div>
 
-<div class="category">
+<div class="group">
 <h3>Staff</h3>
-
-<a href="#staffrules">🛡 Staff Rules</a>
-<a href="#staffroles">📋 Staff Roles</a>
-<a href="#staffpunishments">⚠ Staff Punishments</a>
-</div>
-
-<div class="category">
-<h3>Punishments</h3>
-
-<a href="#punishments">🔨 Punishment Guidelines</a>
-<a href="#definitions">📖 Definitions</a>
+<a href="#staff">Staff Rules</a>
+<a href="#punishments">Punishments</a>
 </div>
 
 </div>
@@ -229,469 +237,210 @@ Brick <span>City</span> RP
 <div class="main">
 
 <div class="hero">
-<h1>Brick City RP Rules</h1>
-
+<h1>Brick City Roleplay Documentation</h1>
 <p>
-Welcome to the official Brick City RP rulebook. These rules are designed to maintain a serious, realistic, and enjoyable roleplay environment for every member of the community. By participating in the server, you agree to follow all listed rules and understand that staff may issue punishments at their discretion when necessary.
+This documentation outlines all official rules, expectations, and systems within Brick City RP. Every player is expected to understand and follow these rules to maintain a realistic and fair roleplay environment.
 </p>
 </div>
 
+<!-- GENERAL -->
 <section class="section" id="general">
-
 <h2>General Rules</h2>
 
-<div class="rule">
-<h3>Age Requirement</h3>
-<p>
-You must meet the server’s minimum age requirement in order to maintain access to Brick City RP. Any exceptions are handled directly by management and are never guaranteed. Attempting to lie about your age may result in immediate removal from the community.
-</p>
+<div class="card">
+<h3>Respect & Conduct</h3>
+<p>All players must remain respectful at all times. Toxicity, harassment, discrimination, or attempts to ruin another player’s experience are strictly prohibited.</p>
 </div>
 
-<div class="rule">
-<h3>Conduct & Respect</h3>
-<p>
-Respect is expected at all times, both in-character and out-of-character. Harassment, discrimination, excessive toxicity, or targeted behavior toward other players will not be tolerated. Keep interactions mature and respectful regardless of the situation.
-</p>
+<div class="card">
+<h3>Server Integrity</h3>
+<p>Exploiting bugs, glitches, or unintended mechanics is not allowed. Any discovered exploits must be reported immediately.</p>
 </div>
 
-<div class="rule">
-<h3>Staff Authority</h3>
-<p>
-Staff have final authority over all server situations. If a staff member instructs you to stop something or cooperate with an investigation, you are expected to comply immediately. Disrespecting or obstructing staff may result in removal from the server.
-</p>
-</div>
-
-<div class="rule">
-<h3>Metagaming & External Information</h3>
-<p>
-Using information gained from Discord calls, livestreams, chats, or any outside source for in-character decisions is strictly prohibited. If your character did not learn something through roleplay, your character cannot act on that information.
-</p>
-
-<div class="punishment">
-Punishment: Warn → Warn + Kick → 7 Day Ban
-</div>
-
-</div>
-
-<div class="rule">
-<h3>Ban Evasion</h3>
-<p>
-Attempting to bypass punishments through alternate accounts, VPNs, spoofers, or any other method is strictly prohibited and may result in a permanent removal from the community.
-</p>
-
-<div class="punishment">
-Punishment: Permanent Ban
-</div>
-
+<div class="card">
+<h3>Realism Standard</h3>
+<p>All roleplay must follow realistic logic. Unrealistic actions that break immersion may be classified as FailRP.</p>
 </div>
 
 </section>
 
-<section class="section" id="reports">
+<!-- NEW LIFE -->
+<section class="section" id="newlife">
+<h2>New Life Rule</h2>
 
-<h2>Reporting Requirements</h2>
-
-<div class="rule">
-<h3>Submitting Reports</h3>
-
-<p>
-All reports must contain clear and unedited video evidence that accurately represents the full situation. Clips should include proper context and clearly identify every involved player. A minimum of three minutes is expected unless the situation specifically requires additional footage.
-<br><br>
-Reports must be submitted within 24 hours of the incident. Delayed reports or reports lacking evidence may be denied without review. Weaponizing the report system, filing false reports, or creating reports out of anger or revenge may result in punishment.
-</p>
-
+<div class="card">
+<h3>Definition</h3>
+<p>When your character dies, they lose memory of the events leading up to their death. You may not return to the area of death or continue related roleplay.</p>
+<span class="badge">Strict Enforcement</span>
 </div>
 
 </section>
 
-<section class="section" id="tebex">
+<!-- META -->
+<section class="section" id="metagaming">
+<h2>Metagaming</h2>
 
-<h2>Tebex Item Loss</h2>
-
-<div class="rule">
-<h3>Tebex Guidelines</h3>
-
-<p>
-Tebex items remain subject to roleplay at all times. If an item is lost through legitimate in-character interaction, it will not be refunded. Claims regarding lost items require a minimum three-minute clip clearly showing the full situation and any associated rule breaks.
-<br><br>
-Attempting to use purchased items or perks to avoid roleplay, bypass server mechanics, or gain unfair advantages may result in punishment or permanent removal of purchased content.
-</p>
-
+<div class="card">
+<h3>Rule</h3>
+<p>Using information from Discord, streams, or external sources in-character is prohibited. All knowledge must be gained through roleplay.</p>
+<span class="badge">Warn → Ban</span>
 </div>
 
 </section>
 
-<section class="section" id="roleplay">
+<!-- FAILRP -->
+<section class="section" id="failrp">
+<h2>FailRP</h2>
 
-<h2>Roleplay Rules</h2>
-
-<div class="rule">
-<h3>FailRP</h3>
-
-<p>
-Roleplay should remain realistic, immersive, and believable at all times. Ignoring injuries, forcing unrealistic outcomes, refusing to acknowledge consequences, or behaving in ways that destroy immersion may be considered FailRP.
-</p>
-
-<div class="punishment">
-Punishment: Warn → Warn → 5 Day Ban
-</div>
-
-</div>
-
-<div class="rule">
-<h3>FearRP</h3>
-
-<p>
-Players are expected to value their character’s life realistically. Ignoring threats while outnumbered, refusing reasonable demands while at gunpoint, or acting recklessly in dangerous situations may be considered FearRP.
-</p>
-
-<div class="punishment">
-Punishment: Warn → Warn → 3 Day Ban
-</div>
-
-</div>
-
-<div class="rule">
-<h3>Powergaming</h3>
-
-<p>
-Powergaming refers to performing unrealistic actions or forcing unrealistic outcomes onto another player. Roleplay should always allow reasonable reactions and remain grounded within the server’s realistic environment.
-</p>
-
-<div class="punishment">
-Punishment: Warn → Warn → 3 Day Ban
-</div>
-
+<div class="card">
+<h3>Definition</h3>
+<p>FailRP includes any unrealistic action that breaks immersion such as ignoring injuries, unrealistic survival, or refusing consequences.</p>
+<span class="badge">Punishable Offense</span>
 </div>
 
 </section>
 
-<section class="section" id="greenzone">
+<!-- FEARRP -->
+<section class="section" id="fearrp">
+<h2>FearRP</h2>
 
-<h2>Green Zone Conduct</h2>
-
-<div class="rule">
-<h3>Green Zones</h3>
-
-<p>
-Green Zones are considered safe public areas. Crime, hostility, shootings, kidnapping, and violent confrontations are not allowed inside these locations. Players may not drag active situations into Green Zones in order to avoid consequences or force protection.
-</p>
-
-<div class="punishment">
-Punishment: Warn → Warn + Kick → 5 Day Ban
-</div>
-
+<div class="card">
+<h3>Behavior Expectation</h3>
+<p>You must value your character’s life. Acting recklessly under threat of death or ignoring weapons pointed at you is not allowed.</p>
 </div>
 
 </section>
 
-<section class="section" id="interaction">
+<!-- COMBAT -->
+<section class="section" id="combat">
+<h2>Combat Rules</h2>
 
-<h2>Interaction & Initiation Guidelines</h2>
-
-<div class="rule">
-<h3>Initiation</h3>
-
-<p>
-Hostile interactions require proper verbal initiation and roleplay buildup before violence may occur. Players may not immediately escalate situations without giving others a reasonable chance to react or comply.
-</p>
-
+<div class="card">
+<h3>Initiation Requirement</h3>
+<p>All hostile actions require clear roleplay initiation before engagement.</p>
 </div>
 
-<div class="rule">
+<div class="card">
 <h3>Third Partying</h3>
-
-<p>
-Joining an active shootout or criminal situation without prior involvement or proper roleplay context is prohibited.
-</p>
-
-<div class="punishment">
-Punishment: Warn → Warn + Kick → 5 Day Ban
-</div>
-
+<p>Joining active gunfights without context or roleplay reason is prohibited.</p>
 </div>
 
 </section>
 
+<!-- CRIMINAL -->
 <section class="section" id="criminal">
+<h2>Criminal Roleplay</h2>
 
-<h2>Criminal Rules</h2>
-
-<div class="rule">
-<h3>Kill or Rob</h3>
-
-<p>
-Players may either kill another player or rob them during an interaction, but not both. If a player has already been fully downed, they may not also be robbed afterward.
-</p>
-
+<div class="card">
+<h3>Hostage Rules</h3>
+<p>Hostages must be taken through valid force and realistic roleplay. Voluntary hostages are not valid.</p>
 </div>
 
-<div class="rule">
-<h3>Hostages</h3>
-
-<p>
-Hostages must be taken through force and proper roleplay. Asking somebody to voluntarily become a hostage is not considered valid roleplay. Demands should remain realistic and balanced.
-</p>
-
-</div>
-
-<div class="rule">
-<h3>Combat Logging</h3>
-
-<p>
-Disconnecting during active roleplay to avoid consequences, death, police interaction, or administrative situations is prohibited.
-</p>
-
-<div class="punishment">
-Punishment: 3 Day Ban → 7 Day Ban
-</div>
-
-</div>
-
-<div class="rule">
-<h3>VDM</h3>
-
-<p>
-Using vehicles as weapons without valid roleplay reason is prohibited. Vehicles should not be intentionally used to kill or severely injure players outside of realistic circumstances.
-</p>
-
-<div class="punishment">
-Punishment: Warn → Vehicle Blacklist/Kick → 5 Day Ban
-</div>
-
+<div class="card">
+<h3>Robbery Rules</h3>
+<p>You may not kill and fully rob the same player in a single interaction.</p>
 </div>
 
 </section>
 
-<section class="section" id="ems">
+<!-- GREENZONE -->
+<section class="section" id="greenzone">
+<h2>Green Zones</h2>
 
-<h2>EMS Rules</h2>
-
-<div class="rule">
-<h3>Medical Roleplay</h3>
-
-<p>
-EMS personnel are expected to prioritize patient care and maintain professional, realistic medical roleplay at all times. Unrealistic treatment, rushing scenes, or participating in criminal activity while employed as EMS is prohibited.
-</p>
-
+<div class="card">
+<h3>Safe Areas</h3>
+<p>Green Zones are protected areas where violence, robbery, and kidnapping are strictly prohibited.</p>
 </div>
 
 </section>
 
+<!-- PD -->
 <section class="section" id="pd">
+<h2>Police Department</h2>
 
-<h2>PD Rules</h2>
-
-<div class="rule">
-<h3>Law Enforcement Expectations</h3>
-
-<p>
-Police officers are expected to remain professional and follow proper procedures during all interactions. Abuse of power, corruption without approval, targeting players unfairly, or developing a “win mentality” will not be tolerated.
-</p>
-
+<div class="card">
+<h3>Conduct</h3>
+<p>Officers must remain professional, realistic, and unbiased at all times.</p>
 </div>
 
 </section>
 
-<section class="section" id="weazel">
+<!-- EMS -->
+<section class="section" id="ems">
+<h2>EMS</h2>
 
+<div class="card">
+<h3>Medical RP</h3>
+<p>EMS must provide realistic medical care and may not participate in criminal activity while on duty.</p>
+</div>
+
+</section>
+
+<!-- WEAZEL -->
+<section class="section" id="weazel">
 <h2>Weazel News</h2>
 
-<div class="rule">
-<h3>Media Conduct</h3>
-
-<p>
-Weazel News employees must remain neutral and professional while reporting. False reporting, interfering in active scenes without permission, or using media access for personal gain is prohibited.
-</p>
-
+<div class="card">
+<h3>Journalism Rules</h3>
+<p>Weazel News must remain neutral and cannot interfere with active roleplay scenes.</p>
 </div>
 
 </section>
 
-<section class="section" id="staffrules">
-
+<!-- STAFF -->
+<section class="section" id="staff">
 <h2>Staff Rules</h2>
 
-<div class="rule">
-<h3>Staff Conduct</h3>
-
-<p>
-Staff members are expected to remain professional, respectful, and unbiased at all times. Abuse of commands, favoritism, leaking sensitive information, or using staff tools for roleplay gain is strictly prohibited.
-<br><br>
-Staff should behave as though they are using two separate accounts — one for moderation and one for roleplay. The two should never overlap.
-</p>
-
-</div>
-
-<div class="rule">
-<h3>Administrative Expectations</h3>
-
-<p>
-Moderators are expected to investigate reports fairly, gather proper evidence before issuing punishments, and remain calm during all staff interactions. Toxicity within the staff team will not be tolerated.
-</p>
-
+<div class="card">
+<h3>Expectations</h3>
+<p>Staff must remain unbiased, professional, and never use administrative tools for personal gain.</p>
 </div>
 
 </section>
 
-<section class="section" id="staffroles">
-
-<h2>Staff Roles</h2>
-
-<div class="rule">
-<h3>Trial Moderator</h3>
-
-<p>
-Trial Moderators are community members undergoing evaluation before receiving full staff permissions. They are expected to remain active, helpful, and professional while assisting the staff team.
-</p>
-
-</div>
-
-<div class="rule">
-<h3>Moderator</h3>
-
-<p>
-Moderators are responsible for investigating reports, collecting evidence, issuing punishments, and resolving player disputes fairly and professionally.
-</p>
-
-</div>
-
-<div class="rule">
-<h3>Administrator</h3>
-
-<p>
-Administrators possess advanced permissions and technical access to the server. They are responsible for community management, server maintenance, and resolving major issues or disputes.
-</p>
-
-</div>
-
-</section>
-
-<section class="section" id="staffpunishments">
-
-<h2>Staff Punishments</h2>
-
-<div class="rule">
-<h3>Strike System</h3>
-
-<p>
-Staff warnings remain permanently attached to a staff member’s record. Repeated issues or serious violations may result in strikes, suspension, demotion, or permanent termination depending on severity.
-</p>
-
-</div>
-
-</section>
-
+<!-- PUNISHMENTS -->
 <section class="section" id="punishments">
+<h2>Punishment System</h2>
 
-<h2>Punishment Guidelines</h2>
-
-<div class="rule">
-<h3>RDM (Random Deathmatch)</h3>
-
-<p>
-Killing another player without valid roleplay reason.
-</p>
-
-<div class="punishment">
-Warn → Warn + Kick → 1 Week Ban
-</div>
-
-</div>
-
-<div class="rule">
-<h3>NITRP (No Intent To Roleplay)</h3>
-
-<p>
-Joining the server only to troll, disrupt roleplay, or intentionally ruin scenes rather than participate seriously.
-</p>
-
-<div class="punishment">
-1 Month Ban
-</div>
-
-</div>
-
-<div class="rule">
-<h3>Stream Sniping</h3>
-
-<p>
-Using livestreams or external content to locate players or gain information in-game.
-</p>
-
-<div class="punishment">
-14 Day Ban
-</div>
-
-</div>
-
-<div class="rule">
-<h3>Doxing / Real Life Threats</h3>
-
-<p>
-Sharing personal information, threatening physical harm, or attempting to intimidate players outside the game environment.
-</p>
-
-<div class="punishment">
-Permanent Ban
-</div>
-
-</div>
-
-</section>
-
-<section class="section" id="definitions">
-
-<h2>Definitions</h2>
-
-<div class="rule">
+<div class="card">
 <h3>RDM</h3>
-
-<p>
-Random Deathmatch — killing another player without valid roleplay reason.
-</p>
-
+<p>Random Deathmatch — killing without valid roleplay reason.</p>
+<span class="badge">Warn → Ban</span>
 </div>
 
-<div class="rule">
+<div class="card">
 <h3>VDM</h3>
-
-<p>
-Vehicle Deathmatch — using vehicles as weapons without valid roleplay reason.
-</p>
-
+<p>Vehicle Deathmatch — using vehicles to harm players unrealistically.</p>
+<span class="badge">Warn → Ban</span>
 </div>
 
-<div class="rule">
-<h3>Metagaming</h3>
-
-<p>
-Using out-of-character information in-character.
-</p>
-
-</div>
-
-<div class="rule">
-<h3>Powergaming</h3>
-
-<p>
-Performing unrealistic actions or forcing actions unfairly onto other players.
-</p>
-
-</div>
-
-<div class="rule">
+<div class="card">
 <h3>NITRP</h3>
-
-<p>
-No Intent To Roleplay — joining only to troll or intentionally disrupt roleplay.
-</p>
-
+<p>No Intent To Roleplay — joining only to troll or disrupt roleplay.</p>
+<span class="badge">Permanent Ban Possible</span>
 </div>
 
 </section>
 
 </div>
+
+<script>
+
+// THEME TOGGLE
+function toggleTheme(){
+document.body.classList.toggle("light");
+}
+
+// SEARCH FILTER
+const search = document.querySelector(".search");
+search.addEventListener("input", e=>{
+const val = e.target.value.toLowerCase();
+document.querySelectorAll(".card").forEach(c=>{
+c.style.display = c.innerText.toLowerCase().includes(val) ? "block":"none";
+});
+});
+
+</script>
 
 </body>
 </html>
