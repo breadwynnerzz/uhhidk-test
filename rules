@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brick City RP | Rules</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+:root{
+--bg:#090909;
+--bg2:#111111;
+--card:#151515;
+--border:#242424;
+--text:#f5f5f5;
+--muted:#9d9d9d;
+--red:#bb0000;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:var(--bg);
+color:var(--text);
+display:flex;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+width:300px;
+height:100vh;
+position:fixed;
+left:0;
+top:0;
+background:#0b0b0b;
+border-right:1px solid var(--border);
+padding:24px;
+overflow-y:auto;
+}
+
+.logo{
+font-size:28px;
+font-weight:800;
+margin-bottom:35px;
+}
+
+.logo span{
+color:var(--red);
+}
+
+.category{
+margin-bottom:34px;
+}
+
+.category h3{
+font-size:12px;
+letter-spacing:1px;
+color:#7a7a7a;
+margin-bottom:14px;
+text-transform:uppercase;
+}
+
+.category a{
+display:block;
+padding:12px 14px;
+border-radius:10px;
+margin-bottom:6px;
+text-decoration:none;
+color:#dcdcdc;
+font-size:15px;
+transition:.2s;
+}
+
+.category a:hover{
+background:#171717;
+color:white;
+}
+
+/* MAIN */
+
+.main{
+margin-left:300px;
+width:calc(100% - 300px);
+padding:60px 70px;
+}
+
+.hero{
+margin-bottom:60px;
+}
+
+.hero h1{
+font-size:58px;
+font-weight:800;
+margin-bottom:15px;
+}
+
+.hero p{
+max-width:850px;
+line-height:1.8;
+color:var(--muted);
+font-size:16px;
+}
+
+.section{
+margin-bottom:70px;
+}
+
+.section h2{
+font-size:42px;
+font-weight:800;
+margin-bottom:25px;
+}
+
+.rule{
+background:var(--card);
+border:1px solid var(--border);
+padding:26px;
+border-radius:18px;
+margin-bottom:22px;
+}
+
+.rule h3{
+font-size:24px;
+margin-bottom:12px;
+}
+
+.rule p{
+line-height:1.9;
+color:#d3d3d3;
+font-size:15px;
+}
+
+.punishment{
+margin-top:18px;
+padding:14px 18px;
+background:rgba(187,0,0,0.08);
+border-left:3px solid var(--red);
+border-radius:10px;
+font-size:14px;
+}
+
+@media(max-width:1000px){
+
+.sidebar{
+display:none;
+}
+
+.main{
+margin-left:0;
+width:100%;
+padding:40px 24px;
+}
+
+.hero h1{
+font-size:42px;
+}
+
+.section h2{
+font-size:34px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<div class="logo">
+Brick <span>City</span> RP
+</div>
+
+<div class="category">
+<h3>Getting Started</h3>
+
+<a href="#general">📘 General Rules</a>
+<a href="#reports">🚩 Reporting Requirements</a>
+<a href="#tebex">💰 Tebex Item Loss</a>
+</div>
+
+<div class="category">
+<h3>City Guidelines</h3>
+
+<a href="#roleplay">📜 Roleplay Rules</a>
+<a href="#greenzone">🟢 Green Zone Conduct</a>
+<a href="#interaction">⌛ Interaction Guidelines</a>
+<a href="#criminal">🕵 Criminal Rules</a>
+</div>
+
+<div class="category">
+<h3>Government</h3>
+
+<a href="#ems">🚑 EMS Rules</a>
+<a href="#pd">👮 PD Rules</a>
+<a href="#weazel">📰 Weazel News</a>
+</div>
+
+<div class="category">
+<h3>Staff</h3>
+
+<a href="#staffrules">🛡 Staff Rules</a>
+<a href="#staffroles">📋 Staff Roles</a>
+<a href="#staffpunishments">⚠ Staff Punishments</a>
+</div>
+
+<div class="category">
+<h3>Punishments</h3>
+
+<a href="#punishments">🔨 Punishment Guidelines</a>
+<a href="#definitions">📖 Definitions</a>
+</div>
+
+</div>
+
+<div class="main">
+
+<div class="hero">
+<h1>Brick City RP Rules</h1>
+
+<p>
+Welcome to the official Brick City RP rulebook. These rules are designed to maintain a serious, realistic, and enjoyable roleplay environment for every member of the community. By participating in the server, you agree to follow all listed rules and understand that staff may issue punishments at their discretion when necessary.
+</p>
+</div>
+
+<section class="section" id="general">
+
+<h2>General Rules</h2>
+
+<div class="rule">
+<h3>Age Requirement</h3>
+<p>
+You must meet the server’s minimum age requirement in order to maintain access to Brick City RP. Any exceptions are handled directly by management and are never guaranteed. Attempting to lie about your age may result in immediate removal from the community.
+</p>
+</div>
+
+<div class="rule">
+<h3>Conduct & Respect</h3>
+<p>
+Respect is expected at all times, both in-character and out-of-character. Harassment, discrimination, excessive toxicity, or targeted behavior toward other players will not be tolerated. Keep interactions mature and respectful regardless of the situation.
+</p>
+</div>
+
+<div class="rule">
+<h3>Staff Authority</h3>
+<p>
+Staff have final authority over all server situations. If a staff member instructs you to stop something or cooperate with an investigation, you are expected to comply immediately. Disrespecting or obstructing staff may result in removal from the server.
+</p>
+</div>
+
+<div class="rule">
+<h3>Metagaming & External Information</h3>
+<p>
+Using information gained from Discord calls, livestreams, chats, or any outside source for in-character decisions is strictly prohibited. If your character did not learn something through roleplay, your character cannot act on that information.
+</p>
+
+<div class="punishment">
+Punishment: Warn → Warn + Kick → 7 Day Ban
+</div>
+
+</div>
+
+<div class="rule">
+<h3>Ban Evasion</h3>
+<p>
+Attempting to bypass punishments through alternate accounts, VPNs, spoofers, or any other method is strictly prohibited and may result in a permanent removal from the community.
+</p>
+
+<div class="punishment">
+Punishment: Permanent Ban
+</div>
+
+</div>
+
+</section>
+
+<section class="section" id="reports">
+
+<h2>Reporting Requirements</h2>
+
+<div class="rule">
+<h3>Submitting Reports</h3>
+
+<p>
+All reports must contain clear and unedited video evidence that accurately represents the full situation. Clips should include proper context and clearly identify every involved player. A minimum of three minutes is expected unless the situation specifically requires additional footage.
+<br><br>
+Reports must be submitted within 24 hours of the incident. Delayed reports or reports lacking evidence may be denied without review. Weaponizing the report system, filing false reports, or creating reports out of anger or revenge may result in punishment.
+</p>
+
+</div>
+
+</section>
+
+<section class="section" id="tebex">
+
+<h2>Tebex Item Loss</h2>
+
+<div class="rule">
+<h3>Tebex Guidelines</h3>
+
+<p>
+Tebex items remain subject to roleplay at all times. If an item is lost through legitimate in-character interaction, it will not be refunded. Claims regarding lost items require a minimum three-minute clip clearly showing the full situation and any associated rule breaks.
+<br><br>
+Attempting to use purchased items or perks to avoid roleplay, bypass server mechanics, or gain unfair advantages may result in punishment or permanent removal of purchased content.
+</p>
+
+</div>
+
+</section>
+
+<section class="section" id="roleplay">
+
+<h2>Roleplay Rules</h2>
+
+<div class="rule">
+<h3>FailRP</h3>
+
+<p>
+Roleplay should remain realistic, immersive, and believable at all times. Ignoring injuries, forcing unrealistic outcomes, refusing to acknowledge consequences, or behaving in ways that destroy immersion may be considered FailRP.
+</p>
+
+<div class="punishment">
+Punishment: Warn → Warn → 5 Day Ban
+</div>
+
+</div>
+
+<div class="rule">
+<h3>FearRP</h3>
+
+<p>
+Players are expected to value their character’s life realistically. Ignoring threats while outnumbered, refusing reasonable demands while at gunpoint, or acting recklessly in dangerous situations may be considered FearRP.
+</p>
+
+<div class="punishment">
+Punishment: Warn → Warn → 3 Day Ban
+</div>
+
+</div>
+
+<div class="rule">
+<h3>Powergaming</h3>
+
+<p>
+Powergaming refers to performing unrealistic actions or forcing unrealistic outcomes onto another player. Roleplay should always allow reasonable reactions and remain grounded within the server’s realistic environment.
+</p>
+
+<div class="punishment">
+Punishment: Warn → Warn → 3 Day Ban
+</div>
+
+</div>
+
+</section>
+
+<section class="section" id="greenzone">
+
+<h2>Green Zone Conduct</h2>
+
+<div class="rule">
+<h3>Green Zones</h3>
+
+<p>
+Green Zones are considered safe public areas. Crime, hostility, shootings, kidnapping, and violent confrontations are not allowed inside these locations. Players may not drag active situations into Green Zones in order to avoid consequences or force protection.
+</p>
+
+<div class="punishment">
+Punishment: Warn → Warn + Kick → 5 Day Ban
+</div>
+
+</div>
+
+</section>
+
+<section class="section" id="interaction">
+
+<h2>Interaction & Initiation Guidelines</h2>
+
+<div class="rule">
+<h3>Initiation</h3>
+
+<p>
+Hostile interactions require proper verbal initiation and roleplay buildup before violence may occur. Players may not immediately escalate situations without giving others a reasonable chance to react or comply.
+</p>
+
+</div>
+
+<div class="rule">
+<h3>Third Partying</h3>
+
+<p>
+Joining an active shootout or criminal situation without prior involvement or proper roleplay context is prohibited.
+</p>
+
+<div class="punishment">
+Punishment: Warn → Warn + Kick → 5 Day Ban
+</div>
+
+</div>
+
+</section>
+
+<section class="section" id="criminal">
+
+<h2>Criminal Rules</h2>
+
+<div class="rule">
+<h3>Kill or Rob</h3>
+
+<p>
+Players may either kill another player or rob them during an interaction, but not both. If a player has already been fully downed, they may not also be robbed afterward.
+</p>
+
+</div>
+
+<div class="rule">
+<h3>Hostages</h3>
+
+<p>
+Hostages must be taken through force and proper roleplay. Asking somebody to voluntarily become a hostage is not considered valid roleplay. Demands should remain realistic and balanced.
+</p>
+
+</div>
+
+<div class="rule">
+<h3>Combat Logging</h3>
+
+<p>
+Disconnecting during active roleplay to avoid consequences, death, police interaction, or administrative situations is prohibited.
+</p>
+
+<div class="punishment">
+Punishment: 3 Day Ban → 7 Day Ban
+</div>
+
+</div>
+
+<div class="rule">
+<h3>VDM</h3>
+
+<p>
+Using vehicles as weapons without valid roleplay reason is prohibited. Vehicles should not be intentionally used to kill or severely injure players outside of realistic circumstances.
+</p>
+
+<div class="punishment">
+Punishment: Warn → Vehicle Blacklist/Kick → 5 Day Ban
+</div>
+
+</div>
+
+</section>
+
+<section class="section" id="ems">
+
+<h2>EMS Rules</h2>
+
+<div class="rule">
+<h3>Medical Roleplay</h3>
+
+<p>
+EMS personnel are expected to prioritize patient care and maintain professional, realistic medical roleplay at all times. Unrealistic treatment, rushing scenes, or participating in criminal activity while employed as EMS is prohibited.
+</p>
+
+</div>
+
+</section>
+
+<section class="section" id="pd">
+
+<h2>PD Rules</h2>
+
+<div class="rule">
+<h3>Law Enforcement Expectations</h3>
+
+<p>
+Police officers are expected to remain professional and follow proper procedures during all interactions. Abuse of power, corruption without approval, targeting players unfairly, or developing a “win mentality” will not be tolerated.
+</p>
+
+</div>
+
+</section>
+
+<section class="section" id="weazel">
+
+<h2>Weazel News</h2>
+
+<div class="rule">
+<h3>Media Conduct</h3>
+
+<p>
+Weazel News employees must remain neutral and professional while reporting. False reporting, interfering in active scenes without permission, or using media access for personal gain is prohibited.
+</p>
+
+</div>
+
+</section>
+
+<section class="section" id="staffrules">
+
+<h2>Staff Rules</h2>
+
+<div class="rule">
+<h3>Staff Conduct</h3>
+
+<p>
+Staff members are expected to remain professional, respectful, and unbiased at all times. Abuse of commands, favoritism, leaking sensitive information, or using staff tools for roleplay gain is strictly prohibited.
+<br><br>
+Staff should behave as though they are using two separate accounts — one for moderation and one for roleplay. The two should never overlap.
+</p>
+
+</div>
+
+<div class="rule">
+<h3>Administrative Expectations</h3>
+
+<p>
+Moderators are expected to investigate reports fairly, gather proper evidence before issuing punishments, and remain calm during all staff interactions. Toxicity within the staff team will not be tolerated.
+</p>
+
+</div>
+
+</section>
+
+<section class="section" id="staffroles">
+
+<h2>Staff Roles</h2>
+
+<div class="rule">
+<h3>Trial Moderator</h3>
+
+<p>
+Trial Moderators are community members undergoing evaluation before receiving full staff permissions. They are expected to remain active, helpful, and professional while assisting the staff team.
+</p>
+
+</div>
+
+<div class="rule">
+<h3>Moderator</h3>
+
+<p>
+Moderators are responsible for investigating reports, collecting evidence, issuing punishments, and resolving player disputes fairly and professionally.
+</p>
+
+</div>
+
+<div class="rule">
+<h3>Administrator</h3>
+
+<p>
+Administrators possess advanced permissions and technical access to the server. They are responsible for community management, server maintenance, and resolving major issues or disputes.
+</p>
+
+</div>
+
+</section>
+
+<section class="section" id="staffpunishments">
+
+<h2>Staff Punishments</h2>
+
+<div class="rule">
+<h3>Strike System</h3>
+
+<p>
+Staff warnings remain permanently attached to a staff member’s record. Repeated issues or serious violations may result in strikes, suspension, demotion, or permanent termination depending on severity.
+</p>
+
+</div>
+
+</section>
+
+<section class="section" id="punishments">
+
+<h2>Punishment Guidelines</h2>
+
+<div class="rule">
+<h3>RDM (Random Deathmatch)</h3>
+
+<p>
+Killing another player without valid roleplay reason.
+</p>
+
+<div class="punishment">
+Warn → Warn + Kick → 1 Week Ban
+</div>
+
+</div>
+
+<div class="rule">
+<h3>NITRP (No Intent To Roleplay)</h3>
+
+<p>
+Joining the server only to troll, disrupt roleplay, or intentionally ruin scenes rather than participate seriously.
+</p>
+
+<div class="punishment">
+1 Month Ban
+</div>
+
+</div>
+
+<div class="rule">
+<h3>Stream Sniping</h3>
+
+<p>
+Using livestreams or external content to locate players or gain information in-game.
+</p>
+
+<div class="punishment">
+14 Day Ban
+</div>
+
+</div>
+
+<div class="rule">
+<h3>Doxing / Real Life Threats</h3>
+
+<p>
+Sharing personal information, threatening physical harm, or attempting to intimidate players outside the game environment.
+</p>
+
+<div class="punishment">
+Permanent Ban
+</div>
+
+</div>
+
+</section>
+
+<section class="section" id="definitions">
+
+<h2>Definitions</h2>
+
+<div class="rule">
+<h3>RDM</h3>
+
+<p>
+Random Deathmatch — killing another player without valid roleplay reason.
+</p>
+
+</div>
+
+<div class="rule">
+<h3>VDM</h3>
+
+<p>
+Vehicle Deathmatch — using vehicles as weapons without valid roleplay reason.
+</p>
+
+</div>
+
+<div class="rule">
+<h3>Metagaming</h3>
+
+<p>
+Using out-of-character information in-character.
+</p>
+
+</div>
+
+<div class="rule">
+<h3>Powergaming</h3>
+
+<p>
+Performing unrealistic actions or forcing actions unfairly onto other players.
+</p>
+
+</div>
+
+<div class="rule">
+<h3>NITRP</h3>
+
+<p>
+No Intent To Roleplay — joining only to troll or intentionally disrupt roleplay.
+</p>
+
+</div>
+
+</section>
+
+</div>
+
+</body>
+</html>
